@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
+    public function __construct()
+    {
+        // 👇 Middleware hanya untuk method admin
+        $this->middleware(['auth:sanctum', 'admin'])->only(['store', 'update', 'destroy']);
+    }
+
     public function index()
     {
         return Author::all();
