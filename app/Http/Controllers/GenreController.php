@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
-class AuthorController extends Controller
+class GenreController extends Controller
 {
     public function index()
     {
-        return Author::all();
+        return Genre::all();
     }
 
     public function store(Request $request)
@@ -18,7 +18,7 @@ class AuthorController extends Controller
             'name' => 'required|string'
         ]);
 
-        return Author::create([
+        return Genre::create([
             'name' => $request->name
         ]);
     }
