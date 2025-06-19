@@ -22,4 +22,42 @@ class GenreController extends Controller
             'name' => $request->name
         ]);
     }
+
+    public function show($id)
+    {
+        $genre = Genre::find($id);
+        if (!$genre) {
+            return response()->json(['message' => 'Genre not found'], 404);
+        }
+        return $genre;
+    }
+
+    public function update(Request $request, $id)
+    {
+        $genre = Genre::find($id);
+        if (!$genre) {
+            return response()->json(['message' => 'Genre not found'], 404);
+        }
+
+        $request->validate([
+            'name' => 'required|string'
+        ]);
+
+        $genre->update([
+            'name' => $request->name
+        ]);
+
+        return $genre;
+    }
+
+    public function destroy($id)
+    {
+        $genre = Genre::find($id);
+        if (!$genre) {
+            return response()->json(['message' => 'Genre not found'], 404);
+        }
+
+        $genre->delete();
+        return response()->json(['message' => 'Genre deleted successfully']);
+    }
 }
