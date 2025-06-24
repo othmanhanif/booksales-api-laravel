@@ -10,7 +10,7 @@ class AuthorController extends Controller
     public function __construct()
     {
         // 👇 Middleware hanya untuk method admin
-        $this->middleware(['auth:sanctum', 'admin'])->only(['store', 'update', 'destroy']);
+        $this->middleware(['auth:api', 'checkrole:admin'])->only(['store', 'update', 'destroy']);
     }
 
     public function index()
