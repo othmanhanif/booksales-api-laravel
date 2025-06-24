@@ -29,8 +29,8 @@ class TransactionController extends Controller
             'user_id' => $request->user()->id,
             'book_id' => $request->book_id,
             'quantity' => $request->quantity,
-            'transaction_date' => now(), // ✅ DITAMBAHKAN
-            'status' => 'pending' // Tambahkan ini
+            'transaction_date' => now(), 
+            'status' => 'pending', 
         ]);
 
         return response()->json($transaction, 201);
